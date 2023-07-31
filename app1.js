@@ -1,5 +1,3 @@
-
-
 const apiUrl2 = 'http://127.0.0.1:8080/admin/api/fetch_features';
 const accessToken = 'e30=|1690292965|37f05446a6cfaa10c07e1ff2a8f1ddc187ce99f4';
 
@@ -207,7 +205,7 @@ function editFeature(featureId) {
     window.location.href = 'http://127.0.0.1:5500/index.html';
 
     // Do something after updating the feature, like displaying a success message
-    alert('Success is on its way!');
+    alert('Are you sure you want to change this ? ');
   })
   .catch(error => console.error('Update error:', error));
 }
