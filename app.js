@@ -1,7 +1,10 @@
 // Global variables
-const apiUrl1 = 'http://127.0.0.1:8080/admin/api/add_new_feature';
-const accessToken = 'e30=|1690292965|37f05446a6cfaa10c07e1ff2a8f1ddc187ce99f4';
-const accessToken1 ='e30=|1690292965|37f05446a6cfaa10c07e1ff2a8f1ddc187ce99f4'
+
+// // Load the environment variables from the .env file
+require('dotenv').config();
+
+const apiUrl = process.env.POST_API_URL;
+const accessToken = process.env.ACCESS_TOKEN;
 
 function submitFeature(event) {
    event.preventDefault();
@@ -16,10 +19,10 @@ function submitFeature(event) {
        status: status
    };
 
-   fetch(apiUrl1, {
+   fetch(apiUrl, {
        method: 'POST',
        headers: {
-           'Authorization': `Bearer ${accessToken1}`,
+           'Authorization': `Bearer ${accessToken}`,
            'Content-Type': 'application/json'
        },
        body: JSON.stringify({

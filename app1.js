@@ -1,13 +1,22 @@
-const apiUrl2 = 'http://127.0.0.1:8080/admin/api/fetch_features';
-const accessToken = 'e30=|1690292965|37f05446a6cfaa10c07e1ff2a8f1ddc187ce99f4';
+//import dotenv from 'dotenv';
+require('dotenv').config();dotenv.config();
+
+// Load environment variables from .env file
+dotenv.config();
+
+const fetchApiUrl = process.env.GET_API_URL;
+const updateApiUrl = process.env.UPDATE_API_URL;
+
+const toggleApiUrl = process.env.TOGGLE_API_URL;
 
 
-//https://tape-aids-dev.nw.r.appspot.com/admin/api/
+const accessToken = process.env.ACCESS_TOKEN;
+
 
 let featuresCont = document.querySelector('.container');
 
 function fetchData() {
-  fetch(apiUrl2, {
+  fetch(fetchApiUrl, {
     headers: {
       'Authorization': `Bearer ${accessToken}`
     }
@@ -119,7 +128,7 @@ featuresCont.addEventListener('click', function(event) {
 
 
   function updateFeatureStatus(featureId, status) {
-    fetch(`http://127.0.0.1:8080/admin/api/toggle_feature/${featureId}`, {
+    fetch(`${toggleApiUrl}/${featureId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -181,7 +190,7 @@ function editFeature(featureId) {
   };
 
  
-  fetch(`http://127.0.0.1:8080/admin/api/update_feature/${featureId}`, {
+  fetch(`${updateApiUrl}/${featureId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
