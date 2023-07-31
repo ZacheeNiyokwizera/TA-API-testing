@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <form onsubmit="submitFeature(event)" autocomplete="on">
+        <label for="title">Title:</label>
+        <input type="text" id="title"  autocomplete="on">
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" autocomplete="on"  ></textarea>
+        <br>
+        <label for="status">Status:</label>
+        <!-- <input type="checkbox" id="status" name="status" value="on"> -->
+
+          <label class="switch">
+            <!-- <input type="checkbox" id="status" name="status" value="off"> -->
+            <input type="checkbox" id="status"  name="status"  value=`${isChecked}`>
+
+            <span class="slider round"></span>
+        </label>
+
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <button> <a href="features.html">Check it out </a></button>
+
+
+<script src="app.js"></script>
+</body>
+</html>
