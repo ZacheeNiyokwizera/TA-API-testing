@@ -1,17 +1,9 @@
-//import dotenv from 'dotenv';
-require('dotenv').config();dotenv.config();
+// global variables
 
-// Load environment variables from .env file
-dotenv.config();
-
-const fetchApiUrl = process.env.GET_API_URL;
-const updateApiUrl = process.env.UPDATE_API_URL;
-
-const toggleApiUrl = process.env.TOGGLE_API_URL;
-
-
-const accessToken = process.env.ACCESS_TOKEN;
-
+const updateApiUrl = ''
+const toggleApiUrl = ''
+const fetchApiUrl = ''
+let accessToken = ''
 
 let featuresCont = document.querySelector('.container');
 
@@ -28,7 +20,8 @@ function fetchData() {
     return response.json();
   })
   .then(data => {
-    let myFeatures = data.features;
+    let myFeatures = data.feature_notifications;
+    console.log(data)
     displayFeatures(myFeatures);
   })
   .catch(error => console.error('Fetch error:', error));
@@ -41,7 +34,6 @@ function displayFeatures(myFeatures){
 
     // If the status of the feature is true or exist (: we will check the HTML Toggle 
     const isChecked = feature.status ? 'checked' : '';
-
 
     featuresList.innerHTML += `
       <div class="card">
@@ -183,32 +175,36 @@ function editFeature(featureId) {
   // let newStatus = document.getElementById('editStatus').value;
   
   // Get the feature data from the form or anywhere else
-  const updatedFeature = {
+  const newFeatureNotification = {
     title: newTitle,
     description: newDescription,
     // status: newStatus, // or "off", depending on the status
   };
 
- 
-  fetch(`${updateApiUrl}/${featureId}`, {
+  ///admin/api/update_feature_notification/
+
+  fetch(`http://127.0.0.1:8080/admin/api/update_feature_notification/${featureId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     },
-    body: JSON.stringify({ updatedFeature }),
+    body: JSON.stringify({ newFeatureNotification }),
   })
   .then(response => {
-    console.log(updatedFeature)
+    console.log(response)
+    console.log(newFeatureNotification)
     if (!response.ok) {
-      console.log(updatedFeature)
-      console.log(`Here's the ${featureId}`)
+     
+      console.log(`Here's the id : ${featureId}`)
 
       throw new Error('Update failed');
     }
     return response.json();
   })
   .then(data => {
+
+    console.log(data)
     console.log('Feature updated:', data);
     modal.style.display = "none";
     window.location.href = 'http://127.0.0.1:5500/index.html';

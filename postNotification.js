@@ -1,10 +1,6 @@
-// Global variables
-
-// // Load the environment variables from the .env file
-require('dotenv').config();
-
-const apiUrl = process.env.POST_API_URL;
-const accessToken = process.env.ACCESS_TOKEN;
+// global variables for fetching data 
+const postApiUrl = ''
+let accessToken = ''
 
 function submitFeature(event) {
    event.preventDefault();
@@ -19,22 +15,29 @@ function submitFeature(event) {
        status: status
    };
 
-   fetch(apiUrl, {
+   fetch(postApiUrl, {
        method: 'POST',
        headers: {
            'Authorization': `Bearer ${accessToken}`,
            'Content-Type': 'application/json'
        },
        body: JSON.stringify({
-           newFeature: newFeatureData
+        NewFeatureNotification: newFeatureData
        })
    })
    .then(response => {
        if (!response.ok) {
+        console.log(response)
+        console.log(response.body)
            throw new Error('Network response was not ok');
+           
        }
        return response.json();
    })
    .then(data => console.log('New feature submitted:', data))
-   .catch(error => console.error('Fetch error:', error));
+   .catch(error => {
+    
+    console.error('Fetch error:', error)
+  
+});
 }
