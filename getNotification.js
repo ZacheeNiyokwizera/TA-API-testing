@@ -1,10 +1,5 @@
 // global variables
 
-const updateApiUrl = ''
-const toggleApiUrl = ''
-const fetchApiUrl = ''
-let accessToken = ''
-
 let featuresCont = document.querySelector('.container');
 
 function fetchData() {
@@ -40,12 +35,13 @@ function displayFeatures(myFeatures){
         <div class="card-items">
           <h2><b>${feature.title} </b></h2> 
           <p>${feature.description}</p> 
-          <h4><b>${feature.status}</b></h4> 
+          <h4> Status : <b> ${feature.status}</b></h4> 
        
         </div>
 
         <div class="card-bottom"> 
           <div class="card-status">
+         
             <label class="switch">
               <input type="checkbox" name="status" data-feature-id="${feature.id}" ${isChecked}>
               <span class="slider round"></span>
@@ -55,7 +51,7 @@ function displayFeatures(myFeatures){
           <div class="card-status">
             <!-- Use data attribute to store the feature key for each button -->
             <button class="myBtn" data-feature-id="${feature.id}">Edit</button>
-            <button>Delete</button>
+           
           </div>
         </div>
       </div>`;
@@ -72,6 +68,8 @@ function displayFeatures(myFeatures){
        // const status = event.target.checked ? 'on' : 'off';
        const status = event.target.checked ? 'true' : 'false';
 
+    
+
         console.log(`A Message with Id ${featureId} has been changed to ${status}.`);
         alert(`A Message with Id ${featureId} has been changed to ${status}.`)
          console.log(myFeatures)
@@ -82,7 +80,9 @@ function displayFeatures(myFeatures){
   
 }
 
-
+   // check if the status is checked,
+       // loop through all the other notifications and change their status to false
+       // update the status accordingly
 // Get the Update button
 let updateBtn = document.getElementById('updateBtn');
 

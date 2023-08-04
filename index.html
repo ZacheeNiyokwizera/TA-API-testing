@@ -13,26 +13,28 @@
         <input type="text" id="title"  autocomplete="on">
         <br>
         <label for="description">Description:</label>
-        <textarea id="description" autocomplete="on"  ></textarea>
+        <textarea id="description" autocomplete="on"></textarea>
         <br>
-        <label for="status">Status:</label>
-        <!-- <input type="checkbox" id="status" name="status" value="on"> -->
+         <h4>Status:</h4> 
 
-          <label class="switch">
-            <!-- <input type="checkbox" id="status" name="status" value="off"> -->
-            <input type="checkbox" id="status"  name="status"  value=`${isChecked}`>
+          <label for="status" class="switch">
+            <input type="checkbox" id="status"  name="status">
 
             <span class="slider round"></span>
         </label>
+
+        <!-- <label for="status">Status:</label>
+        <input type="checkbox" id="status" name="status">
+         -->
 
         <br>
         <button type="submit">Submit</button>
     </form>
 
-    <button> <a href="getNotification.html">Check it out </a></button>
+   
+    <button> <a href="getNotification.html">View Notifications</a></button>
 
-
-<script src="getNotifications.js"></script>
+    <script type="text/javascript" src="postNotification.js"></script>
 
 </body>
 </html>

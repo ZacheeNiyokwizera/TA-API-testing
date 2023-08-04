@@ -52,7 +52,8 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  padding: 20px;
+    padding: 20px;
+    margin-top: 20px;
   }
 
   .card-bottom {
